@@ -1,6 +1,7 @@
 tam1 <- as.xts(data.frame(xts(tam <- tail(tq_get("WKEY", get = "stock.prices", 
                                                   from = begin, to = end),256), order.by = tam$date)[,c(3,4,5,6,7)]))
+storage.mode(tam1) <- "numeric"
   
-  candleChart(as.zoo(tam1), up.col = "blue", dn.col = "red", theme = "white",
+candleChart(as.zoo(tam1), up.col = "blue", dn.col = "red", theme = "white",
            TA="addRSI(); addVo(); addBBands();addEMA(5, col='red');
               addEMA(10, col='black')")
